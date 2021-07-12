@@ -29,6 +29,13 @@ class RouteServiceProvider extends ServiceProvider
     // protected $namespace = 'App\\Http\\Controllers';
 
     /**
+     * Namespace for version 1 API
+     *
+     * @var string
+     */
+    protected $apiV1Namespace = 'App\Http\Controllers\Api\V1';
+
+    /**
      * Define your route model bindings, pattern filters, etc.
      *
      * @return void
@@ -38,9 +45,9 @@ class RouteServiceProvider extends ServiceProvider
         $this->configureRateLimiting();
 
         $this->routes(function () {
-            Route::prefix('api')
+            Route::prefix('v1')
                 ->middleware('api')
-                ->namespace($this->namespace)
+                ->namespace($this->apiV1Namespace)
                 ->group(base_path('routes/api.php'));
 
             Route::middleware('web')
